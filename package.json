@@ -1,0 +1,11 @@
+{
+  "name": "twitter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/himanshuagarwal190/Twitter-Clone.git",
+  "author": "Himanshu Agarwal <himanshuagarwal190@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "prod": "cd frontend && yarn start"
+  }
+}
