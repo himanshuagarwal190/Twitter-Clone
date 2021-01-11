@@ -15,7 +15,7 @@ export default function Signup(){
 
     function onSubmit(e){
         e.preventDefault()
-        instance.post('/api/signup',{
+        instance.post('http://localhost:5000/api/signup',{
             email,
             password,
             handle
