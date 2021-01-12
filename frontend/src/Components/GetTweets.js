@@ -62,7 +62,7 @@ export default function GetTweets(){
                     <p className="text-white px-4 py-2">{tweet.message}</p>
                     <div className="flex justify-around h-10">
                         <button onClick={() => likeTweet(tweet._id)} className="w-1/2 border text-white"><i className="far fa-heart"></i> {likes[tweet._id]}</button>
-                        <button className="w-1/2 border text-white cursor-pointer outline-none focus:outline-none"><i className="far fa-comments"></i></button>
+                        <button className="w-1/2 border text-white"><i className="far fa-comments"></i></button>
                     </div>
                 </div>
             )
