@@ -1,5 +1,4 @@
 import {Redirect} from 'react-router-dom'
-import React, {useState} from 'react'
 import AddTweet from './AddTweet'
 import GetTweets from './GetTweets'
 import Logout from './Logout'
