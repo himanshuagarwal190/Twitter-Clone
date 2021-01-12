@@ -29,7 +29,7 @@ export default function AddTweet(){
     }
 
     function addTweet(){
-        instance.post('http://localhost:5000/api/tweet',{
+        instance.post('/api/tweet',{
                 tweet: tweetMessage
             })
             .then((response)=>{

@@ -14,7 +14,7 @@ export default function Login(){
 
     function onSubmit(e){
         e.preventDefault()
-        instance.post('http://localhost:5000/api/login',{
+        instance.post('/api/login',{
             email,
             password
         })

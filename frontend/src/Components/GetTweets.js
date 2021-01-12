@@ -12,7 +12,7 @@ export default function GetTweets(){
     const [likes, setLikesState] = useState()
 
     function likeTweet(tweetId){
-        instance.put('http://localhost:5000/api/like',{
+        instance.put('/api/like',{
             key: tweetId
         })
         .then((response) =>{
@@ -37,7 +37,7 @@ export default function GetTweets(){
     }
     
     useEffect(() =>{
-        instance.get('http://localhost:5000/api/tweet')
+        instance.get('/api/tweet')
         .then((response) =>{
             if(response.data.status === 200){
                 const likeCount = {}
