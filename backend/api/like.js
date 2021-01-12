@@ -1,7 +1,8 @@
 const Tweet = require("../models/tweets")
+const authMiddleware = require('../utils/authMiddleware')
 
 module.exports = (app) =>{
-    app.put('/api/like', async (req, res)=>{
+    app.put('/api/like', authMiddleware, async (req, res)=>{
         const key = req.body.key
         const token = req.cookies.token
 

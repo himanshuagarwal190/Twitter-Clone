@@ -16,7 +16,7 @@ module.exports = (app) =>{
                     res.send({status: 401, message: 'Email does not exists'})
                 }
                 else if(user.password === password){
-                    res.cookie('token', user.id)
+                    res.cookie('token', user.id, {httpOnly: true})
                     res.cookie('handle', user.handle)
                     res.send({status: 200, message: 'Loggin Success', user:{email: user.email, handle: user.handle}})
                 }
