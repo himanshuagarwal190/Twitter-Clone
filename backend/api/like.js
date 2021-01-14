@@ -1,39 +1,37 @@
-const Tweet = require("../models/tweets")
-const authMiddleware = require('../utils/authMiddleware')
+const Tweet = require("../models/tweets");
+const authMiddleware = require("../utils/authMiddleware");
 
-module.exports = (app) =>{
-    app.put('/api/like', authMiddleware, async (req, res)=>{
-        const key = req.body.key
-        const token = req.cookies.token
+module.exports = (app) => {
+  app.put("/api/like", authMiddleware, async (req, res) => {
+    const key = req.body.key;
+    const token = req.cookies.token;
 
-        Tweet.findById(key, (err, tweet)=>{
-            if(err){
-                console.log('Error in Like API')
-                res.send('Error')
+    Tweet.findById(key, (err, tweet) => {
+      if (err) {
+        console.log("Error in Like API");
+        res.send("Error");
+      } else {
+        // For Liking Tweet
+        if (!tweet.Likes.includes(token)) {
+          tweet.Likes.push(token);
+          tweet.save((err, done) => {
+            if (done) {
+              res.send({ status: 200, message: "Tweet Liked", tweet: tweet });
             }
-            else{
-                // For Liking Tweet
-                if(!tweet.Likes.includes(token)){
-                    tweet.Likes.push(token)
-                    tweet.save((err, done)=>{
-                        if(done){
-                            res.send({status:200, message:'Tweet Liked', tweet: tweet})
-                        }
-                    })
-                }
-                else{
-                    // For Unliking Tweet
-                    const index = tweet.Likes.indexOf(token)
-                    if(index > -1){
-                        tweet.Likes.splice(index, 1)
-                    }
-                    tweet.save((err, done)=>{
-                        if(done){
-                            res.send({status:201, message:'Tweet Unliked', tweet: tweet})
-                        }
-                    })
-                }
+          });
+        } else {
+          // For Unliking Tweet
+          const index = tweet.Likes.indexOf(token);
+          if (index > -1) {
+            tweet.Likes.splice(index, 1);
+          }
+          tweet.save((err, done) => {
+            if (done) {
+              res.send({ status: 201, message: "Tweet Unliked", tweet: tweet });
             }
-        })
-    })
-}
+          });
+        }
+      }
+    });
+  });
+};
